@@ -104,8 +104,28 @@ namespace CodeMorph.FizzBuzz.Application.Tests
             var formatter = new Formatter() { Maximum = 100, Minimum = 1 };
             formatter.TokenMapper.Add(3, "Fizz");
             formatter.TokenMapper.Add(5, "Buzz");
-            int rawNumber = 10;
+            int rawNumber = 9;
             var expectedResult = "Fizz";
+
+            //Act
+            var actualResult = formatter.FormatInteger(rawNumber);
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Tests fizzbuzz formatter with valid data
+        /// </summary>
+        [TestMethod]
+        public void FormatInteger_ReplaceMod3WithFizzAdMod5WithBuzzRawNumber23_Valid()
+        {
+            //Arrange
+            var formatter = new Formatter() { Maximum = 100, Minimum = 1 };
+            formatter.TokenMapper.Add(3, "Fizz");
+            formatter.TokenMapper.Add(5, "Buzz");
+            int rawNumber = 23;
+            var expectedResult = "23";
 
             //Act
             var actualResult = formatter.FormatInteger(rawNumber);
@@ -119,18 +139,71 @@ namespace CodeMorph.FizzBuzz.Application.Tests
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(InvalidFormatterRangeException))]
-        public void FormatInteger_ReplaceMod3WithFizzAdMod5WithBuzzRawNumber9_InvalidFormatterRangeException()
+        public void FormatFullRange_ReplaceMod3WithFizzAdMod5WithBuzz_InvalidFormatterRangeException()
         {
             //Arrange
             var formatter = new Formatter() { Maximum = 1, Minimum = 10 };
             formatter.TokenMapper.Add(3, "Fizz");
             formatter.TokenMapper.Add(5, "Buzz");
-            int rawNumber = 10;
-
+           
             //Act
-            var actualResult = formatter.FormatInteger(rawNumber);
+            var actualResult = formatter.FormatFullRange();
 
             //Assert omitted as we are testing for an expected exception
+        }
+
+        /// <summary>
+        /// Tests fizzbuzz formatter with invalid data
+        /// </summary>
+        [TestMethod]
+        public void FormatFullRange_ReplaceMod3WithFizzAdMod5WithBuzzMin1Max10_Valid()
+        {
+            //Arrange
+            var formatter = new Formatter() { Maximum = 10, Minimum = 1 };
+            formatter.TokenMapper.Add(3, "Fizz");
+            formatter.TokenMapper.Add(5, "Buzz");
+            var expectedResult = "12Fizz4BuzzFizz78FizzBuzz";
+            //Act
+            var actualResult = formatter.FormatFullRange();
+
+            //Assert 
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Tests fizzbuzz formatter with invalid data
+        /// </summary>
+        [TestMethod]
+        public void FormatFullRange_ReplaceMod3WithFizzAdMod5WithBuzzMin13Max16_Valid()
+        {
+            //Arrange
+            var formatter = new Formatter() { Maximum = 16, Minimum = 13 };
+            formatter.TokenMapper.Add(3, "Fizz");
+            formatter.TokenMapper.Add(5, "Buzz");
+            var expectedResult = "1314FizzBuzz16";
+            //Act
+            var actualResult = formatter.FormatFullRange();
+
+            //Assert 
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        /// <summary>
+        /// Tests fizzbuzz formatter with invalid data
+        /// </summary>
+        [TestMethod]
+        public void FormatFullRange_ReplaceMod3WithFizzAdMod5WithBuzzMin0Max0_Valid()
+        {
+            //Arrange
+            var formatter = new Formatter() { Maximum = 0, Minimum = 0 };
+            formatter.TokenMapper.Add(3, "Fizz");
+            formatter.TokenMapper.Add(5, "Buzz");
+            var expectedResult = "0";
+            //Act
+            var actualResult = formatter.FormatFullRange();
+
+            //Assert 
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
         /// <summary>

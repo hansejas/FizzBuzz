@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMorph.FizzBuzz.Application", "CodeMorph.FizzBuzz.Application\CodeMorph.FizzBuzz.Application.csproj", "{878CF2AE-6BEA-4A5D-B4B1-9DEFAA1729A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMorph.FizzBuzz.Console", "CodeMorph.FizzBuzz.Console\CodeMorph.FizzBuzz.Console.csproj", "{8FA7026A-572C-4F04-B330-937F0B76DB2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMorph.FizzBuzz.ConsoleUI", "CodeMorph.FizzBuzz.Console\CodeMorph.FizzBuzz.ConsoleUI.csproj", "{8FA7026A-572C-4F04-B330-937F0B76DB2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMorph.FizzBuzz.Application.Tests", "CodeMorph.FizzBuzz.Application.Tests\CodeMorph.FizzBuzz.Application.Tests.csproj", "{CAFEFB95-D77E-49B2-9543-812EB1D80F31}"
 EndProject
